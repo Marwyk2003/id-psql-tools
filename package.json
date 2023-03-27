@@ -1,0 +1,62 @@
+{
+  "name": "id-psql-tools",
+  "displayName": "id psql tools",
+  "description": "Tools for writing queries in psql. Destined for  \"Inzynieria Danych\" at TCS-UJ.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/npm/cli.git"
+  },
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.76.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "id_psql_tools.run_query",
+        "title": "Run Query"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "resourceLangId == sql && editorTextFocus",
+          "command": "id_psql_tools.run_query",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [{
+      "command": "id_psql_tools.run_query",
+      "key": "ctrl+r",
+      "mac": "cmd+r",
+      "when": "resourceLangId == sql && editorTextFocus"
+    }]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.76.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "eslint": "^8.34.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^4.9.5",
+    "@vscode/test-electron": "^2.2.3"
+  }
+}
